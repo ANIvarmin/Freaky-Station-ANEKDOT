@@ -3,9 +3,6 @@ using Content.Shared.DoAfter;
 using Robust.Shared.Serialization;
 
 namespace Content.Goobstation.Shared.Slasher.Events;
-/// <summary>
-/// A collection of various Slasher Related Events
-/// </summary>
 
 [ByRefEvent]
 public sealed partial class SlasherRegenerateEvent : InstantActionEvent;
@@ -16,15 +13,9 @@ public sealed partial class SlasherMassacreEvent : InstantActionEvent;
 [ByRefEvent]
 public sealed partial class SlasherPossessionEvent : EntityTargetActionEvent;
 
-/// <summary>
-/// Toggle event for the blood trail action.
-/// </summary>
 [ByRefEvent]
 public sealed partial class ToggleBloodTrailEvent : InstantActionEvent;
 
-/// <summary>
-/// Soul steal targeted action event.
-/// </summary>
 [ByRefEvent]
 public sealed partial class SlasherSoulStealEvent : EntityTargetActionEvent;
 
@@ -37,8 +28,45 @@ public sealed partial class SlasherSummonMacheteEvent : InstantActionEvent;
 [ByRefEvent]
 public sealed partial class SlasherSummonMeatSpikeEvent : InstantActionEvent;
 
-/// <summary>
-/// DoAfter event raised when Soul Steal completes.
-/// </summary>
 [Serializable, NetSerializable]
 public sealed partial class SlasherSoulStealDoAfterEvent : SimpleDoAfterEvent;
+
+[ByRefEvent]
+public sealed partial class SlasherIncorporealizeEvent : InstantActionEvent;
+
+[ByRefEvent]
+public sealed partial class SlasherCorporealizeEvent : InstantActionEvent;
+
+[Serializable, NetSerializable]
+public sealed partial class SlasherIncorporealizeDoAfterEvent : SimpleDoAfterEvent;
+
+[ByRefEvent]
+public record struct SlasherIncorporealObserverCheckEvent
+{
+    public NetEntity Slasher;
+    public float Range;
+    public bool Cancelled;
+
+    public SlasherIncorporealObserverCheckEvent(NetEntity slasher, float range)
+    {
+        Slasher = slasher;
+        Range = range;
+    }
+}
+
+[ByRefEvent]
+public record struct SlasherIncorporealCameraCheckEvent
+{
+    public NetEntity Slasher;
+    public float Range;
+    public bool Cancelled;
+
+    public SlasherIncorporealCameraCheckEvent(NetEntity slasher, float range)
+    {
+        Slasher = slasher;
+        Range = range;
+    }
+}
+
+[ByRefEvent]
+public record struct SlasherIncorporealEnteredEvent;

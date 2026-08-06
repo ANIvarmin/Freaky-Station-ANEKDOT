@@ -108,3 +108,9 @@ public partial record struct WoundableSeverityMultiplier(FixedPoint2 Change, str
 
 [Serializable, DataRecord]
 public partial record struct WoundableHealingMultiplier(FixedPoint2 Change, string Identifier = "Unspecified");
+
+[ByRefEvent]
+public record struct WoundAddedOnBodyEvent(Entity<WoundComponent> Wound, WoundableComponent? ParentWoundable, WoundableComponent? RootWoundable);
+
+[ByRefEvent]
+public record struct WoundSeverityPointChangedOnBodyEvent(Entity<WoundComponent> Wound, FixedPoint2 OldBodySeverity, FixedPoint2 NewBodySeverity);

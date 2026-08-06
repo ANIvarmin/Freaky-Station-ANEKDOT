@@ -1162,13 +1162,6 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             // Goob edit start
             // Raises a event for the deaf component
-            var ev = new ChatMessageOverrideInVoiceRange();
-            RaiseLocalEvent(listener, ref ev);
-            if (channel == ChatChannel.Local
-                && language.SpeechOverride.RequireSpeech // Check for whether speech is required.
-                && ev.Cancelled)
-                continue;
-            //Goob edit end
 
             // If the channel does not support languages, or the entity can understand the message, send the original message, otherwise send the obfuscated version
             if (channel == ChatChannel.LOOC || channel == ChatChannel.Emotes || _language.CanUnderstand(listener, language.ID))

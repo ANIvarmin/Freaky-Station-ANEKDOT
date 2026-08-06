@@ -38,8 +38,8 @@
 
 - type: uiFontStyle
   id: Pixeloid
-  name: ui-options-font-style-pixeloid
-  regular: /Fonts/_Mini/Pixeloid/PixeloidSans.ttf
-  bold: /Fonts/_Mini/Pixeloid/PixeloidSans-Bold.ttf
-  mono: /Fonts/_Mini/Pixeloid/PixeloidMono.ttf
+  name: ui-options-font-style-HemicoGreekRegular
+  regular: /Fonts/_Freaky/Hemico/HemicoGreekRegular.ttf
+  bold: /Fonts/_Freaky/Hemico/HemicoGreekRegular.ttf
+  mono: /Fonts/_Freaky/Hemico/HemicoGreekRegular.ttf
   order: 4

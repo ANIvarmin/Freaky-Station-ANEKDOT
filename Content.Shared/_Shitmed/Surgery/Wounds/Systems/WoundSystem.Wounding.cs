@@ -1296,7 +1296,7 @@ public sealed partial class WoundSystem
             return;
 
         var nearestSeverity = component.WoundSeverity;
-        foreach (var (severity, value) in _woundThresholds.OrderByDescending(kv => kv.Value))
+        foreach (var (severity, value) in WoundThresholds.OrderByDescending(kv => kv.Value))
         {
             var scaledThreshold = value * (woundableComp.IntegrityCap / 100);
             if (component.WoundSeverityPoint < scaledThreshold)
@@ -1805,5 +1805,5 @@ public sealed partial class WoundSystem
             .Aggregate(FixedPoint2.Zero, (current, wound) => current + wound.Comp.WoundIntegrityDamage);
     }
 
-    #endregion
+    #endregion
 }

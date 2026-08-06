@@ -53,4 +53,10 @@ public sealed partial class ShadowCloakEntityComponent : Component
 
     [DataField]
     public FixedPoint2 SustainedDamageReductionRate = 1;
+
+    [DataField, AutoNetworkedField]
+    public float? DeletionAccumulator;
+
+    [DataField]
+    public float Lifetime = 30f;
 }

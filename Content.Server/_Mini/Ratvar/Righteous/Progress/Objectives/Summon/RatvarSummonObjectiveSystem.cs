@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Content.Server.Pinpointer;
 using Content.Server.Station.Components;
 using Content.Shared.Ninja.Components;
@@ -143,7 +143,7 @@ public sealed class RatvarSummonObjectiveSystem : EntitySystem
             return Loc.GetString("nav-beacon-pos-no-beacons");
 
         var coordinates = _transform.GetMapCoordinates(target, xform);
-        var beaconName = FormattedMessage.RemoveMarkupPermissive(_navMap.GetNearestBeaconString(coordinates, onlyName: true));
+        var beaconName = FormattedMessage.RemoveMarkupPermissive(_navMap.GetNearestBeaconString(coordinates));
         if (!string.IsNullOrWhiteSpace(beaconName) &&
             beaconName != Loc.GetString("nav-beacon-pos-no-beacons"))
         {

@@ -122,7 +122,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
 
         // Check if anyone can see them.
         var checkEv = new SlasherIncorporealObserverCheckEvent(GetNetEntity(ent.Owner), ent.Comp.ObserverCheckRange);
-        RaiseLocalEvent(ent.Owner, checkEv);
+        RaiseLocalEvent(ent.Owner, ref checkEv);
         if (checkEv.Cancelled)
         {
             _popup.PopupEntity(Loc.GetString("slasher-incorporealize-fail-seen"), ent.Owner, ent.Owner);
@@ -168,7 +168,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
 
         // Check if anyone can see them.
         var checkEv = new SlasherIncorporealObserverCheckEvent(GetNetEntity(ent.Owner), ent.Comp.ObserverCheckRange);
-        RaiseLocalEvent(ent.Owner, checkEv);
+        RaiseLocalEvent(ent.Owner, ref checkEv);
         if (checkEv.Cancelled)
         {
             _popup.PopupEntity(Loc.GetString("slasher-corporealize-fail-nearby"), ent.Owner, ent.Owner);
@@ -217,7 +217,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
 
         // Check if anyone can see them.
         var checkEv = new SlasherIncorporealObserverCheckEvent(GetNetEntity(ent.Owner), ent.Comp.ObserverCheckRange);
-        RaiseLocalEvent(ent.Owner, checkEv);
+        RaiseLocalEvent(ent.Owner, ref checkEv);
         if (checkEv.Cancelled)
         {
             _popup.PopupEntity(Loc.GetString("slasher-corporealize-fail-seen"), ent.Owner, ent.Owner);
@@ -228,7 +228,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void EnterIncorporeal(EntityUid uid, Entity<SlasherIncorporealComponent> ent)
+    public void EnterIncorporeal(EntityUid uid, Entity<SlasherIncorporealComponent> ent)
     {
         ent.Comp.IsIncorporeal = true;
         ent.Comp.IncorporealStartTime = _timing.CurTime;
@@ -281,7 +281,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         RaiseLocalEvent(uid, ref enteredEv);
     }
 
-    private void ExitIncorporeal(EntityUid uid, Entity<SlasherIncorporealComponent> ent)
+    public void ExitIncorporeal(EntityUid uid, Entity<SlasherIncorporealComponent> ent)
     {
         ent.Comp.IsIncorporeal = false;
         Dirty(ent);

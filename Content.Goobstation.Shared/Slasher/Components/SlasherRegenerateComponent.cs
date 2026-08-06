@@ -9,7 +9,7 @@ namespace Content.Goobstation.Shared.Slasher.Components;
 /// <summary>
 /// Basically just injects whatever chemical you want and breaks cuffs.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class SlasherRegenerateComponent : Component
 {
     [ViewVariables]
@@ -38,6 +38,9 @@ public sealed partial class SlasherRegenerateComponent : Component
 
     [DataField]
     public SoundSpecifier RegenerateSound = new SoundPathSpecifier("/Audio/_Goobstation/Slasher/slasher_regenerate.ogg");
+
+    [DataField, AutoNetworkedField]
+    public bool HasSoulAvailable;
 }
 
 

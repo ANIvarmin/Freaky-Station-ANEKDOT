@@ -293,7 +293,7 @@ public abstract class SharedShadowCloakSystem : EntitySystem
         }
     }
 
-    private EntityUid? GetShadowCloakEntity(EntityUid ent)
+    protected EntityUid? GetShadowCloakEntity(EntityUid ent)
     {
         var xform = Transform(ent);
 

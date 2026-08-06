@@ -24,6 +24,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Collections;
 using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Instruments;
@@ -98,7 +99,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
         component.AllowProgramChange = state.AllowProgramChange;
         component.RespectMidiLimits = state.RespectMidiLimits;
         component.Master = EnsureEntity<InstrumentComponent>(state.Master, uid);
-        component.FilteredChannels = state.FilteredChannels;
+        component.FilteredChannels = new BitArray(state.FilteredChannels);
 
         if (component.Playing)
             SetupRenderer(uid, true, component);
