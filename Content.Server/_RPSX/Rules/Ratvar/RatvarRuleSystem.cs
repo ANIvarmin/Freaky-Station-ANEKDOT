@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Content.Server.RPSX.DarkForces.Ratvar.Righteous.Progress;
 using Content.Server.RPSX.DarkForces.Ratvar.Righteous.Progress.Events;
@@ -152,7 +152,7 @@ public sealed class RatvarRuleSystem : GameRuleSystem<RatvarRuleComponent>
     private string GetAnnouncementLocation(EntityUid uid)
     {
         var coordinates = _transform.GetMapCoordinates(uid);
-        var location = FormattedMessage.RemoveMarkupPermissive(_navMap.GetNearestBeaconString(coordinates, onlyName: true));
+        var location = FormattedMessage.RemoveMarkupPermissive(_navMap.GetNearestBeaconString(coordinates));
 
         if (string.IsNullOrWhiteSpace(location) ||
             location == Loc.GetString("nav-beacon-pos-no-beacons"))

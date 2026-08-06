@@ -88,7 +88,6 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             OnSetInjectAmountMessage);
 
         SubscribeLocalEvent<InventoryComponent, InfestHostAttempt>(OnInfestHostAttempt);
-        SubscribeLocalEvent<CorticalBorerComponent, CheckTargetedSpeechEvent>(OnSpeakEvent);
 
         SubscribeLocalEvent<CorticalBorerComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<CorticalBorerComponent, MindRemovedMessage>(OnMindRemoved);
@@ -157,17 +156,6 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
                 EndControl((comp.Owner, comp));
 #pragma warning restore CS0618
         }
-    }
-
-    private static void OnSpeakEvent(Entity<CorticalBorerComponent> ent, ref CheckTargetedSpeechEvent args)
-    {
-        args.ChatTypeIgnore.Add(InGameICChatType.CollectiveMind);
-
-        if (!ent.Comp.Host.HasValue)
-            return;
-
-        args.Targets.Add(ent);
-        args.Targets.Add(ent.Comp.Host.Value);
     }
 
     public void UpdateChemicals(Entity<CorticalBorerComponent> ent, int change)

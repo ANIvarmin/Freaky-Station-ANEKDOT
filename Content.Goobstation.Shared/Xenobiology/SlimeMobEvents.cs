@@ -27,3 +27,12 @@ public sealed partial class SlimeLatchDoAfterEvent : SimpleDoAfterEvent;
 /// rised after mitosis completed, but before parent slime deletion, directed to parent slime
 /// </summary>
 public sealed partial class SlimeMitosisEvent : EntityEventArgs;
+
+[ByRefEvent]
+public sealed partial class EatCorpseEvent : EntityTargetActionEvent;
+
+[Serializable, NetSerializable]
+public sealed partial class EatCorpseDoAfterEvent : SimpleDoAfterEvent;
+
+[Serializable, NetSerializable]
+public sealed partial class SlimeClusterPeelDoAfterEvent : SimpleDoAfterEvent;

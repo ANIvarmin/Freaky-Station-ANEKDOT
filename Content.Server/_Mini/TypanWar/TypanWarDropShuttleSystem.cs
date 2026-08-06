@@ -153,17 +153,17 @@ public sealed class TypanWarDropShuttleSystem : EntitySystem
             if (Transform(dockAUid).GridUid == stationGrid)
             {
                 return FormattedMessage.RemoveMarkupPermissive(
-                    _navMap.GetNearestBeaconString(dockAUid, onlyName: true));
+                    _navMap.GetNearestBeaconString(dockAUid));
             }
 
             if (Transform(dockBUid).GridUid == stationGrid)
             {
                 return FormattedMessage.RemoveMarkupPermissive(
-                    _navMap.GetNearestBeaconString(dockBUid, onlyName: true));
+                    _navMap.GetNearestBeaconString(dockBUid));
             }
         }
 
         return FormattedMessage.RemoveMarkupPermissive(
-            _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(config.Coordinates), onlyName: true));
+            _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(config.Coordinates)));
     }
 }

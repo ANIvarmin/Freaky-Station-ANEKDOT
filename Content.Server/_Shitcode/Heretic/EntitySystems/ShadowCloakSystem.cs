@@ -14,6 +14,7 @@ public sealed class ShadowCloakSystem : SharedShadowCloakSystem
     [Dependency] private readonly ProtectiveBladeSystem _blade = default!;
 
     private const float SustainedDamageReductionInterval = 1f;
+    private static readonly FixedPoint2 SustainedDamageReductionRate = FixedPoint2.New(1);
     private float _accumulator;
 
     public override void Initialize()
@@ -81,7 +82,7 @@ public sealed class ShadowCloakSystem : SharedShadowCloakSystem
         while (shadowCloakedQuery.MoveNext(out _, out var comp))
         {
             comp.SustainedDamage =
-                FixedPoint2.Max(comp.SustainedDamage - comp.SustainedDamageReductionRate, FixedPoint2.Zero);
+                FixedPoint2.Max(comp.SustainedDamage - SustainedDamageReductionRate, FixedPoint2.Zero);
         }
     }
 }

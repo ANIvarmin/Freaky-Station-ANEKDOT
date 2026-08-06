@@ -101,8 +101,8 @@ public sealed class DailyRewardUiSystem : EntitySystem
         if (_window == null || _window.Disposed)
             EnsureWindow();
 
-        _window?.ClearQuestReplacePending();
-        _window?.ShowQuestReplaceError(ev.Reason);
+        // _window?.ClearQuestReplacePending(); // Removed upstream
+        // _window?.ShowQuestReplaceError(ev.Reason); // Removed upstream
     }
 
     private void OnWindowClosed()

@@ -13,11 +13,11 @@ namespace Content.Client.Resources;
 [PublicAPI]
 public static class MiniFonts
 {
-    public const string Dir = "/Fonts/_Mini/Pixeloid/";
+    public const string Dir = "/Fonts/_Freaky/Hemico/";
 
-    public const string Regular = Dir + "PixeloidSans.ttf";
-    public const string Bold = Dir + "PixeloidSans-Bold.ttf";
-    public const string Mono = Dir + "PixeloidMono.ttf";
+    public const string Regular = Dir + "HemicoGreekRegular.ttf";
+    public const string Bold = Dir + "HemicoGreekRegular.ttf";
+    public const string Mono = Dir + "HemicoGreekRegular.ttf";
 
     /// <summary>Fallback for Cyrillic and other glyphs missing from the pixel font.</summary>
     public const string NotoRegular = "/Fonts/NotoSans/NotoSans-Regular.ttf";

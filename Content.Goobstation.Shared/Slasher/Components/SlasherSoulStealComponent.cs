@@ -1,6 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Audio;
+using Content.Shared.Roles;
 
 namespace Content.Goobstation.Shared.Slasher.Components;
 
@@ -145,4 +146,16 @@ public sealed partial class SlasherSoulStealComponent : Component
     /// </summary>
     [DataField]
     public int MaxLightsToFlicker = 3;
+
+    /// <summary>
+    /// Optional starting gear to equip when the slasher ascends.
+    /// </summary>
+    [DataField]
+    public ProtoId<StartingGearPrototype>? AscensionGear;
+
+    /// <summary>
+    /// Optional localization key for the station announcement on ascension.
+    /// </summary>
+    [DataField]
+    public string? AscendanceAnnouncementKey;
 }

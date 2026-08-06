@@ -22,7 +22,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
              MaxHeight="900">
         <PanelContainer StyleClasses="windowPanel" />
             <BoxContainer Orientation="Vertical" SeparationOverride="10" Margin="10 10 5 10">
-                <info:RulesControl/>
+                <info:RulesControl Name="Rules"/>
                 <Label Name="WaitLabel" />
                 <BoxContainer Orientation="Horizontal">
                     <Button Name="AcceptButton"

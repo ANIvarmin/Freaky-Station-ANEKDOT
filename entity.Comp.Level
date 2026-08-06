@@ -1,0 +1,7 @@
+using Robust.Shared.GameObjects;
+
+namespace Content.Server.Progression.Levels;
+
+public sealed class LevelSystem : EntitySystem
+{
+    public int GetLevel(Entity<LevelComponent> entity

@@ -91,7 +91,7 @@ public sealed class InstrumentComponentState : ComponentState
 
     public NetEntity? Master;
 
-    public BitArray FilteredChannels = default!;
+    public bool[] FilteredChannels = default!;
 }
 
 

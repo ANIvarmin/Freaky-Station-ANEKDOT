@@ -1,4 +1,4 @@
-﻿using Content.Shared.Humanoid;
+using Content.Shared.Humanoid;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.WhiteDream.BloodCult.BloodCultist;
@@ -50,7 +50,8 @@ public sealed partial class CultRuneBaseSystem
             _pulling.TryStopPull(target, pullable);
 
         // I wish there was a better way to do it
-        if (_pulling.TryGetPulledEntity(target, out var pulling))
-            _pulling.TryStopPull(pulling.Value);
+        var pulling = _pulling.GetPulling(target);
+        if (pulling != null && TryComp<PullableComponent>(pulling.Value, out var pullableComp))
+            _pulling.TryStopPull(pulling.Value, pullableComp);
     }
 }

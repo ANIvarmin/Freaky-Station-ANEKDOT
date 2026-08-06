@@ -16,3 +16,6 @@ public record struct ImmuneToPoisonDamageEvent(bool Immune = false);
 
 [ByRefEvent]
 public record struct ExcludeMetabolismGroupsEvent(EntityUid Metabolizer, List<ProtoId<MetabolismGroupPrototype>>? Groups = null);
+
+[ByRefEvent]
+public record struct HereticLostFocusEvent;

@@ -1,3 +1,4 @@
+#if false
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._Shitmed.Medical.Surgery.Pain.Components;
@@ -711,3 +712,5 @@ public sealed partial class WoundSystem
         return false;
     }
 }
+
+#endif

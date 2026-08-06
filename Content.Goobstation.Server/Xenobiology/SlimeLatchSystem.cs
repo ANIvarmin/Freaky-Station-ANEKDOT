@@ -31,6 +31,7 @@ namespace Content.Goobstation.Server.Xenobiology;
 // This handles any actions that slime mobs may have.
 public sealed partial class SlimeLatchSystem : EntitySystem
 {
+    public const float XenoVacuumReleaseLatchBlockSeconds = 5f;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -287,4 +288,20 @@ public sealed partial class SlimeLatchSystem : EntitySystem
     }
 
     #endregion
+
+    public void CancelLatchIfSlime(EntityUid entity)
+    {
+        if (TryComp<SlimeComponent>(entity, out var slime))
+        {
+            var ent = (entity, slime);
+            if (IsLatched(ent))
+                Unlatch(ent);
+        }
+    }
+
+    public void MarkXenoVacuumReleased(EntityUid entity)
+    {
+        var comp = EnsureComp<SlimeXenoVacuumReleasedComponent>(entity);
+        comp.BlockLatchUntil = _gameTiming.CurTime + TimeSpan.FromSeconds(XenoVacuumReleaseLatchBlockSeconds);
+    }
 }

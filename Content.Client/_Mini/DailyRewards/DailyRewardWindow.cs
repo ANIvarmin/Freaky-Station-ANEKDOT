@@ -187,7 +187,8 @@ public sealed class DailyRewardWindow : DefaultWindow
             _state.RequiredActiveTime,
             _state.Rewards,
             onlineElapsed,
-            grantedCopy);
+            grantedCopy,
+            _state.DailyQuests);
 
         RefreshState();
     }

@@ -23,6 +23,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Inventory.VirtualItem;
 
+[ByRefEvent]
+public record struct GetVirtualItemBlockingEntityEvent(EntityUid Uid);
+
+
 /// <summary>
 /// In charge of managing virtual items.
 /// Virtual items are used to block a <see cref="SlotButton"/>

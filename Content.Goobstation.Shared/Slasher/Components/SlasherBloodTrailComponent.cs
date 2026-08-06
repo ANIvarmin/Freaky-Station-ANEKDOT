@@ -61,4 +61,10 @@ public sealed partial class SlasherBloodTrailComponent : Component
 
     [ViewVariables]
     public EntityUid? BloodTrailMusicStream;
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? Funkyslasher;
+
+    [ViewVariables]
+    public EntityUid? FunkyslasherStream;
 }

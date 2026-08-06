@@ -1,8 +1,9 @@
-﻿using Content.Server.Popups;
+using Content.Server.Popups;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Maps;
+using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Physics;
 using Content.Shared.WhiteDream.BloodCult;
@@ -75,8 +76,9 @@ public sealed class VeilShifterSystem : EntitySystem
             return false;
         }
 
-        if (_pulling.TryGetPulledEntity(user, out var pulledEntity))
-            _pulling.TryStopPull(pulledEntity.Value);
+        var pulledEntity = _pulling.GetPulling(user);
+        if (pulledEntity != null && TryComp<PullableComponent>(pulledEntity.Value, out var pulledComp))
+            _pulling.TryStopPull(pulledEntity.Value, pulledComp);
 
         _transform.SetCoordinates(user, coords);
         if (pulledEntity.HasValue)

@@ -1,3 +1,4 @@
+#if false
 using System.Linq;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared._Shitmed.Targeting;
@@ -340,3 +341,5 @@ public sealed partial class WoundSystem
         Dirty(uid, component);
     }
 }
+
+#endif
