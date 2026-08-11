@@ -8,7 +8,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Lavaland/Mobs/Demons/bubblegum.rsi
+    - sprite: _Lavaland/Mobs/Bubblegum.rsi
       state: icon
       scale: 0.5, 0.5
   - type: ConditionalSpawner
