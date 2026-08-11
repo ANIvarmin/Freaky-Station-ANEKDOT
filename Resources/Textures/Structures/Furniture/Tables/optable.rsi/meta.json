@@ -9,7 +9,7 @@
     "states": [
         {
             "name": "operating_table",
-            "directions": 4
+            "directions": 1
         }
     ]
 }
