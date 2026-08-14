@@ -24,5 +24,24 @@
   - type: Item
     size: Normal
     sprite: _Goobstation/Objects/Weapons/Melee/breverb.rsi
+  - type: Clothing # Freaky
+    sprite: _Goobstation/Objects/Weapons/Melee/breverb.rsi
+    slots:
+    - back
   - type: DisarmMalus
   - type: Execution
+
+# Freaky
+- type: entity
+  parent: ReverbScythe
+  id: ReverbScytheToy
+  suffix: Toy
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: 65
+    attackRate: 1.25
+    damage:
+      types:
+        Slash: 5
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
