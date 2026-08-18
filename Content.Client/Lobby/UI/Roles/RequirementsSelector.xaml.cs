@@ -129,7 +129,6 @@ public sealed partial class RequirementsSelector : BoxContainer
         else
         {
             OptionsContainer.MinWidth = 0;
-            OptionsContainer.MaxSize = Vector2.Zero;
         }
 
         if (icon != null)
