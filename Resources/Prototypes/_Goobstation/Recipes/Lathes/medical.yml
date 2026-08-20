@@ -166,3 +166,12 @@
   icon:
     sprite: Structures/dispensers.rsi
     state: industrial-working
+    
+- type: latheRecipe
+  id: ECigarette
+  result: ECigarette
+  completetime: 2
+  materials:
+    Plastic: 50
+    Steel: 100
+    Glass: 100
