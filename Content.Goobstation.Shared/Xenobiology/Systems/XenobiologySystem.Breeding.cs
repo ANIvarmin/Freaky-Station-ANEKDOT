@@ -34,6 +34,13 @@ public partial class XenobiologySystem
 
     private void OnSlimeMapInit(Entity<SlimeComponent> ent, ref MapInitEvent args)
     {
+        var (uid, comp) = ent;
+
+        if (comp.Shader != null)
+            _appearance.SetData(uid, XenoSlimeVisuals.Shader, comp.Shader);
+
+        _appearance.SetData(uid, XenoSlimeVisuals.Color, comp.SlimeColor);
+
         if (!_net.IsServer) return;
 
         Subs.CVar(_configuration, GoobCVars.BreedingInterval, val => ent.Comp.UpdateInterval = TimeSpan.FromSeconds(val), true);
