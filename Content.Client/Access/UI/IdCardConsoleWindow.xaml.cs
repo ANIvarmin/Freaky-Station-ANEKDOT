@@ -63,6 +63,24 @@ namespace Content.Client.Access.UI
         // The job that will be picked if the ID doesn't have a job on the station.
         private static ProtoId<JobPrototype> _defaultJob = "Passenger";
 
+        private static readonly List<ProtoId<JobPrototype>> JobBlacklist = new()
+        {
+
+           "TypanAtmosTech",
+           "TypanBorg",
+           "TypanBotanist",
+           "TypanCargotech",
+           "TypanChef",
+           "TypanCommander",
+           "TypanMedic",
+           "TypanResearchDirector",
+           "TypanScience",
+           "TypanTechnicalOperationsSupervisor",
+           "TypanTechnician",
+           "TypanPatrol"
+
+        };
+
         public IdCardConsoleWindow(IdCardConsoleBoundUserInterface owner,
             IPrototypeManager prototypeManager,
             List<ProtoId<AccessLevelPrototype>> accessLevels,
@@ -120,6 +138,11 @@ namespace Content.Client.Access.UI
             foreach (var job in jobs)
             {
                 if (!job.OverrideConsoleVisibility.GetValueOrDefault(job.SetPreference))
+                {
+                    continue;
+                }
+
+                if (JobBlacklist.Contains(job.ID))
                 {
                     continue;
                 }
