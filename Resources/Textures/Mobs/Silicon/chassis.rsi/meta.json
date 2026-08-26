@@ -240,6 +240,23 @@
       "directions": 4
     },
     {
+      "name": "sec",
+      "directions": 4
+    },
+    {
+      "name": "sec_e",
+      "directions": 4
+    },
+	
+    {
+      "name": "sec_l",
+      "directions": 4
+    },
+    {
+      "name": "sec_e_r",
+      "directions": 4
+    },
+    {
       "name": "service",
       "directions": 4
     },

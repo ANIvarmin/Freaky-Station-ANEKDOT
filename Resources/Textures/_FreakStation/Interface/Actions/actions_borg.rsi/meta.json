@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Module actions by ANIvam",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "default-module"
+        },
+        {
+            "name": "flash-module"
+        },
+        {
+            "name": "non-lethal-advanced"
+        },
+        {
+            "name": "non-lethal-module"
+        },
+        {
+            "name": "shield-module"
+        }
+    ]
+}

@@ -30,7 +30,7 @@
   spriteNoMindState: sexborg_e_r
   spriteToggleLightState: sexborg_l
 
-  # и как мне блядь понять что они имели ввиду под "PET"!?
+  # и как мне блядь понять что они имели ввиду под "PET"!? Брат они имели ввиду тут поглаживание
   petSuccessString: petting-success-service-cyborg
   petFailureString: petting-failure-service-cyborg
   

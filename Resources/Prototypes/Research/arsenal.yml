@@ -215,6 +215,8 @@
   - HoloprojectorSecurity
   - WeaponDisablerSMG
   - Terminus #Goobstation
+  - BorgModuleNon-lethalAdvanced #Freak
+  - BorgModuleRiot #Freak
   # Goobstation R&D Console rework start
   position: 3,3
   technologyPrerequisites:
