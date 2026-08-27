@@ -1,0 +1,150 @@
+- type: entity
+  name: drone
+  id: RemoteAiDrone
+  parent: [PlayerSiliconBase, BaseBorgTransponder]
+  components:
+  - type: VentCrawler # CorvaxGoob-Features
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+      enum.InstrumentUiKey.Key: #imp
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
+      enum.StationMapUiKey.Key: #imp
+        type: StationMapBoundUserInterface
+        requireInputValidation: false
+  - type: IntrinsicUI # Goob edit
+    uis:
+      enum.StationMapUiKey.Key:
+        toggleAction: ActionShowStationMap
+      enum.InstrumentUiKey.Key:
+        toggleAction: ActionDronePlayMidi
+  - type: StationMap #imp
+  - type: SiliconLawBound
+  - type: SiliconLawProvider
+    laws: NTDefault
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 5
+    baseSprintSpeed : 5
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      60: Dead
+  #- type: Flash # Goobstation - Remove drone flashing.
+  - type: NoSlip
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown
+    - SlowedDown
+    - Flashed # Goobstation - counter to shitter drones
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      30: 0.7
+      50: 0.5
+  - type: Temperature
+    heatDamageThreshold: 5000
+    currentTemperature: 310.15
+    specificHeat: 42
+    heatDamage:
+      types:
+        Heat : 1 #per second, scales with temperature & other constants
+  - type: Sprite
+    drawdepth: SmallMobs
+    layers:
+    - state: drone
+      sprite: _Imp/Drone/drone.rsi #Mobs/Silicon/drone.rsi
+      map: ["base"]
+  - type: BorgTransponder
+    sprite:
+      sprite: _Imp/Drone/drone.rsi
+      state: drone
+    name: drone
+  - type: MovementIgnoreGravity
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: Appearance
+  - type: LanguageSpeaker # Einstein Engines - Language
+  - type: LanguageKnowledge # Einstein Engines - Language
+    speaks:
+    - DroneTalk
+    - TauCetiBasic
+    understands:
+    - DroneTalk
+    - TauCetiBasic
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Repairable
+    fuelCost: 15
+    doAfterDelay: 8
+  - type: ActionGrant
+    actions:
+    - ActionViewLaws
+  - type: Actions
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 3.5
+    softness: 1
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: ProtectedFromStepTriggers
+  - type: DamageOnInteractProtection # Goobstation - Copied from borgs
+    damageProtection:
+      flatReductions:
+        Heat: 10 # capable of touching light bulbs and stoves without feeling pain!
+  - type: InputMover
+  - type: MobMover
+  - type: ContentEye
+    maxZoom: 1.2, 1.2
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - EmagImmune
+    - CanUseMech
+    - CanPilot
+    - VimPilot
+    - Bot # Goobstation
+  - type: CollectiveMind # Goobstation
+    defaultChannel: Binary
+    channels:
+    - Binary
+  - type: Access
+    tags:
+    - Engineering
+    - Maintenance
+    - Atmospherics # Goobstation
+  - type: AiRemoteController
+  - type: RotationVisuals
+    defaultRotation: 0 
+  - type: Body
+    prototype: AiDrone
+  - type: CombatMode
+#--------------------------------------
+
+- type: body
+  id: AiDrone
+  name: "drone"
+  root: torso
+  slots:
+    torso:
+      part: TorsoBorg
