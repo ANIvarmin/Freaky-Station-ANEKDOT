@@ -43,6 +43,7 @@
   - ProximitySensor
   - Drone
   - AiRemoteBrain
+  - Intellicard
 
 - type: latheRecipePack
   id: BorgModules

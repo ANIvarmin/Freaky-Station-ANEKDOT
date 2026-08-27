@@ -1,0 +1,13 @@
+- type: entity
+  name: ai drone spawner
+  id: RemoteAiDroneSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Structures/Decoration/banner.rsi
+        state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RemoteAiDrone
