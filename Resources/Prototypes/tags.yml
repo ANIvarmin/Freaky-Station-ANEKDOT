@@ -372,6 +372,9 @@
   id: BorgModuleGeneric
 
 - type: Tag
+  id: BorgModuleSecurity
+
+- type: Tag
   id: BorgModuleJanitor
 
 - type: Tag

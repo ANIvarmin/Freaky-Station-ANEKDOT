@@ -1,0 +1,269 @@
+- type: entity
+  id: BorgChassisSecurity
+  parent: BorgChassisSelectable
+  name: security cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: security
+  - type: BorgSwitchableSubtype # Goobstation
+    borgSubtype: security_default
+    
+- type: borgSubtype
+  parentBorgType: security
+  id: security_default
+  spritePath: Mobs/Silicon/chassis.rsi
+  dummyPrototype: BorgChassisSecurity
+  
+  
+- type: borgType
+  id: security
+
+  # Description
+  dummyPrototype: BorgChassisSecurity
+
+  # Functional
+  extraModuleCount: 3
+  moduleWhitelist:
+    tags:
+    - BorgModuleGeneric
+    - BorgModuleSecurity
+
+  defaultModules:
+  - BorgModuleNon-lethal
+  - BorgModuleTool
+  radioChannels:
+  - Science
+  - Security
+  
+  lawset: NTDefault
+  
+  addComponents:
+  - type: ShowJobIcons
+  - type: FlashImmunity
+  - type: ShowSquadIcons # CorvaxGoob-SecApartment
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: ShowContrabandDetails
+
+  # Visual
+  inventoryTemplateId: borgShort
+  spriteBodyState: sec
+  spriteHasMindState: sec_e
+  spriteNoMindState: sec_e_r
+  spriteToggleLightState: sec_l
+
+  # Pet
+  petSuccessString: petting-success-generic-cyborg
+  petFailureString: petting-failure-generic-cyborg
+  
+ # --------------------------------------------------
+  
+  
+- type: entity
+  id: BaseBorgModuleSecurity
+  parent: BaseBorgModule
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#FF0000"
+      - state: base-module-inhand-left
+        color: "#891417"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#7B0F12"
+      right:
+      - state: base-icon-inhand-right
+        color: "#FF0000"
+      - state: base-module-inhand-right  
+        color: "#891417"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+        color: "#7B0F12"
+      
+ # --------------------------------------------------
+        
+- type: entity
+  id: BorgModuleNon-lethal
+  parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
+  name: нелетальный модуль борга
+  components:
+  - type: Sprite
+    layers:
+    - state: security
+    - state: icon-xenoborg-cloak2
+  - type: ItemBorgModule
+    moduleId: Non-lethal
+    items:
+    - WeaponBorgDisabler
+  - type: BorgModuleIcon
+    icon: { sprite: _FreakStation/Interface/Actions/actions_borg.rsi, state: non-lethal-module }
+  - type: DroppableBorgModule
+    moduleId: Non-lethal
+    items:
+    - id: Handcuffs
+      whitelist:
+        components:
+        - Handcuff
+    
+ # --------------------------------------------------
+    
+- type: entity
+  id: BorgModuleNon-lethalAdvanced
+  parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
+  name: продвинутый нелетальный модуль борга
+  components:
+  - type: Sprite
+    layers:
+    - state: security
+    - state: icon-xenoborg-cloak2
+  - type: ItemBorgModule
+    moduleId: Non-lethalAdvanced
+    items:
+    - WeaponBorgDisablerAdvanced
+  - type: BorgModuleIcon
+    icon: { sprite: _FreakStation/Interface/Actions/actions_borg.rsi, state: non-lethal-advanced }
+  - type: DroppableBorgModule
+    moduleId: Non-lethalAdvanced
+    items:
+    - id: Handcuffs
+      whitelist:
+        components:
+        - Handcuff
+    - id: BolaEnergy
+      whitelist:
+        components:
+        - Ensnaring
+    
+ # --------------------------------------------------
+    
+- type: entity
+  id: BorgModuleRiot
+  parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
+  name: модуль подавления беспорядков
+  components:
+  - type: Sprite
+    layers:
+    - state: security
+    - state: icon-xenoborg-cloak2
+  - type: ItemBorgModule
+    moduleId: Riot
+    items:
+    - FlashBorg
+    - PolymerBaton
+  - type: BorgModuleIcon
+    icon: { sprite: _FreakStation/Interface/Actions/actions_borg.rsi, state: shield-module }
+  - type: DroppableBorgModule
+    moduleId: Riot
+    items:
+    - id: Handcuffs
+      whitelist:
+        components:
+        - Handcuff
+    - id: TearGasGrenade
+      whitelist:
+        components:
+        - SmokeOnTrigger
+        - ProjectileGrenade
+        - FlashOnTrigger
+    
+ # --------------------------------------------------
+    
+- type: entity
+  name: borg disabler
+  id: WeaponBorgDisabler
+  parent: WeaponDisabler
+  description: Специальный станнер, который разработан для СБ боргов.
+  components:
+  - type: Gun
+    fireRate: 1.5
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 5
+    
+ # --------------------------------------------------
+    
+- type: entity
+  name: borg advanced disabler
+  id: WeaponBorgDisablerAdvanced
+  parent: WeaponDisabler
+  description: Специальный станнер, который разработан для СБ боргов.
+  components:
+  - type: Gun
+    fireRate: 1.5
+  - type: Battery
+    maxCharge: 850
+    startingCharge: 850
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 5
+    
+ # --------------------------------------------------
+ 
+- type: entity
+  name: flash
+  parent: [BaseItem, BaseSecurityScienceCommandContraband]
+  id: FlashBorg
+  suffix: DO NOT MAP
+  description: An ultrabright flashbulb with a trigger, which causes the victim to be dazed and lose their eyesight for a moment. Useless when burnt out.
+  components:
+    # Goobstation edit start
+    - type: EmitSoundOnPickup
+      sound:
+        path: /Audio/_Goobstation/Items/handling/component_pickup.ogg
+    - type: EmitSoundOnDrop
+      sound:
+        path: /Audio/_Goobstation/Items/handling/component_drop.ogg
+    - type: EmitSoundOnLand
+      sound:
+        path: /Audio/_Goobstation/Items/handling/component_drop.ogg
+    # Goobstation edit end
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/flash.rsi
+      layers:
+      - state: flash
+        map: [ "enum.FlashVisualLayers.BaseLayer" ]
+      - state: flashing
+        map: [ "enum.FlashVisualLayers.LightLayer" ]
+        visible: false
+        shader: unshaded
+    - type: Flash
+    - type: MeleeWeapon
+      wideAnimationRotation: 180
+      damage:
+        types:
+          Blunt: 0 # melee weapon to allow flashing individual targets
+      angle: 10
+    - type: Item
+      size: Small
+      sprite: Objects/Weapons/Melee/flash.rsi
+    - type: UseDelay
+      delay: 8
+    - type: UseDelayOnMeleeHit
+    - type: StaticPrice
+      price: 40
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.FlashVisuals.Burnt:
+          enum.FlashVisualLayers.BaseLayer:
+            True: {state: burnt}
+        enum.FlashVisuals.Flashing:
+          enum.FlashVisualLayers.LightLayer:
+            True: {visible: true}
+            False: {visible: false}
+    - type: GuideHelp
+      guides:
+      - Security
+      - Antagonists
+    - type: Tag
+      tags:
+      - Flash

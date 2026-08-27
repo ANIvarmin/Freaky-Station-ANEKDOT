@@ -1,5 +1,6 @@
 - type: entity
-  name: drone
+  name: управляемый дрон
+  desc: Дрон под управлением ИИ. Имеет доступ к системам некоторых мехов НТ.
   id: RemoteAiDrone
   parent: [PlayerSiliconBase, BaseBorgTransponder]
   components:

@@ -1,0 +1,16 @@
+
+# Security
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleRiot
+  result: BorgModuleRiot
+  
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleNon-lethalAdvanced
+  result: BorgModuleNon-lethalAdvanced
+ 
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleNon-lethal
+  result: BorgModuleNon-lethal

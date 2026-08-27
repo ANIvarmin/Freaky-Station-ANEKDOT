@@ -53,6 +53,8 @@
   # - BorgModuleAdvancedClowning # goobedit
   # - BorgModuleAdvancedChemical # Goob edit
   - BorgModuleAdvancedMining
+  - BorgModuleRiot # Freak
+  - BorgModuleNon-lethalAdvanced #Freak
 
 - type: latheRecipePack
   id: MechParts
