@@ -14,3 +14,15 @@
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleNon-lethal
   result: BorgModuleNon-lethal
+
+- type: latheRecipe
+  id: Intellicard
+  result: Intellicard
+  categories:
+  - Circuitry
+  completetime: 5
+  materials:
+    Steel: 500
+    Glass: 500
+    Gold: 300
+    Diamond: 50
