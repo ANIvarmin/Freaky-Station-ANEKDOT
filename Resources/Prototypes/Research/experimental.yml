@@ -42,6 +42,7 @@
   - ProximitySensor
   - Drone # Goobstation
   - AiRemoteBrain # Goobstation
+  - Intellicard
   position: -1,0
 
 - type: technology
